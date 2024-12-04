@@ -1,0 +1,108 @@
+:root {
+  --theme-morning-start: #ffcfdf;
+  --theme-morning-end: #ffe77a;
+  --theme-afternoon-start: #ffe77a;
+  --theme-afternoon-end: #ff7e5f;
+  --theme-evening-start: #ff7e5f;
+  --theme-evening-end: #6a82fb;
+  --theme-night-start: #2c3e50;
+  --theme-night-end: #000428;
+  --theme-default-start: #d7d7d7;
+  --theme-default-end: #a1a1a1;
+
+  --theme-body-color: #333;
+  --theme-body-font: "Space Mono", sans-serif;
+  --theme-fs-bg: #000;
+  --theme-fs-color: #ccc;
+
+  --theme-sl-bg: "darkslateblue";
+  --theme-sl-color: #ddd;
+
+  --clock-size: 12vw;
+  --date-size: 1.2vw;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: background 1s ease;
+  font-family: var(--theme-body-font);
+  color: var(--theme-body-color);
+}
+
+:fullscreen {
+  background-color: var(--theme-fs-bg);
+  color: var(--theme-fs-color);
+}
+
+::selection {
+  background-color: var(--theme-sl-bg);
+  color: var(--theme-sl-color);
+}
+
+/* Default Gradient */
+body.default {
+  background: linear-gradient(
+    to bottom,
+    var(--theme-default-start),
+    var(--theme-default-end)
+  );
+}
+
+body.morning {
+  background: linear-gradient(
+    to bottom,
+    var(--theme-morning-start),
+    var(--theme-morning-end)
+  );
+}
+
+body.afternoon {
+  background: linear-gradient(
+    to bottom,
+    var(--theme-afternoon-start),
+    var(--theme-afternoon-end)
+  );
+}
+
+body.evening {
+  background: linear-gradient(
+    to bottom,
+    var(--theme-evening-start),
+    var(--theme-evening-end)
+  );
+}
+
+body.night {
+  background: linear-gradient(
+    to bottom,
+    var(--theme-night-start),
+    var(--theme-night-end)
+  );
+  color: #aaa;
+}
+
+#clk-digital #clock-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+#clk-digital #digital-clock {
+  font-size: var(--clock-size);
+  font-weight: bold;
+}
+
+#clk-digital #date-container {
+  width: 100%;
+  text-align: right;
+  font-size: var(--date-size);
+  flex-direction: row-reverse;
+}
