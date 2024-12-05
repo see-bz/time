@@ -11,7 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Martian Mono&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/main.css?v=1" />
 
     <style>
       .mountains {
@@ -35,7 +35,13 @@
     </div>
 
     <div id="clock-container" title="Double click for full screen">
-      <div id="digital-clock"></div>
+      <div id="digital-clock">
+        <div id="hours"></div>
+        <span class="separator">:</span>
+        <div id="minutes"></div>
+        <span class="separator">:</span>
+        <div id="seconds"></div>
+      </div>
       <div id="date-container"></div>
     </div>
 

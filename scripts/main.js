@@ -11,6 +11,9 @@ const $dom = {
   body: document.body,
   clockContainer: document.querySelector("#clock-container"),
   clock: document.querySelector("#digital-clock"),
+  cHours: document.querySelector("#hours"),
+  cMinutes: document.querySelector("#minutes"),
+  cSeconds: document.querySelector("#seconds"),
   date: document.querySelector("#date-container"),
 };
 
@@ -26,7 +29,9 @@ function render() {
   const now = new Date();
   const { hours, minutes, seconds } = getTime(now);
 
-  $dom.clock.textContent = `${hours}:${minutes}:${seconds}`;
+  $dom.cHours.textContent = hours;
+  $dom.cMinutes.textContent = minutes;
+  $dom.cSeconds.textContent = seconds;
 
   // Every minute or initial
   if (isInitial || Number(seconds) == 0) {

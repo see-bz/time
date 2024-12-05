@@ -18,8 +18,8 @@
   --theme-sl-bg: "darkslateblue";
   --theme-sl-color: #ddd;
 
-  --clock-size: 12vw;
-  --date-size: 1.2vw;
+  --clock-size: 10rem;
+  --date-size: 1.25rem;
 }
 
 body {
@@ -98,6 +98,8 @@ body.night {
 #clk-digital #digital-clock {
   font-size: var(--clock-size);
   font-weight: bold;
+  display: flex;
+  flex-direction: row;
 }
 
 #clk-digital #date-container {
@@ -105,4 +107,20 @@ body.night {
   text-align: right;
   font-size: var(--date-size);
   flex-direction: row-reverse;
+}
+
+@media only screen and (max-width: 768px) {
+  #clk-digital #digital-clock {
+    flex-direction: column;
+  }
+
+  #clk-digital #digital-clock .separator {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  :root {
+    --date-size: 1.1rem;
+  }
 }
