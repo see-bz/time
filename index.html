@@ -8,12 +8,32 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Space Mono&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Martian Mono&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles/main.css" />
+
+    <style>
+      .mountains {
+        background-image: url("./assets/images/mountains.svg");
+        width: 101vw;
+        height: 5rem;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+      }
+    </style>
   </head>
   <body id="clk-digital" class="default">
+    <div id="graphics">
+      <div class="backdrop"></div>
+      <div class="mountains"></div>
+
+      <div class="sun"></div>
+      <div class="moon"></div>
+      <div class="stars"></div>
+    </div>
+
     <div id="clock-container" title="Double click for full screen">
       <div id="digital-clock"></div>
       <div id="date-container"></div>

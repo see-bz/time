@@ -1,17 +1,17 @@
 :root {
-  --theme-morning-start: #ffcfdf;
-  --theme-morning-end: #ffe77a;
-  --theme-afternoon-start: #ffe77a;
-  --theme-afternoon-end: #ff7e5f;
-  --theme-evening-start: #ff7e5f;
-  --theme-evening-end: #6a82fb;
-  --theme-night-start: #2c3e50;
-  --theme-night-end: #000428;
+  --theme-morning-start: #86eaf9;
+  --theme-morning-end: #effda4;
+  --theme-afternoon-start: #6bcff2;
+  --theme-afternoon-end: #bef9ff;
+  --theme-evening-start: #fa7ba9;
+  --theme-evening-end: #fff49b;
+  --theme-night-start: #000428;
+  --theme-night-end: #2c3e50;
   --theme-default-start: #d7d7d7;
   --theme-default-end: #a1a1a1;
 
   --theme-body-color: #333;
-  --theme-body-font: "Space Mono", sans-serif;
+  --theme-body-font: "Martian Mono", sans-serif;
   --theme-fs-bg: #000;
   --theme-fs-color: #ccc;
 
