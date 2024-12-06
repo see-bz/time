@@ -18,7 +18,8 @@
   --theme-sl-bg: "darkslateblue";
   --theme-sl-color: #ddd;
 
-  --clock-size: 10rem;
+  --clock-size: 9.5rem;
+  --clock-period-size: 2rem;
   --date-size: 1.25rem;
 }
 
@@ -102,25 +103,39 @@ body.night {
   flex-direction: row;
 }
 
-#clk-digital #date-container {
-  width: 100%;
+#clk-digital #digital-clock #period {
+  font-size: var(--clock-period-size);
   text-align: right;
+  margin-top: auto;
+  margin-bottom: 1.25rem;
+}
+
+#clk-digital #date-container {
   font-size: var(--date-size);
-  flex-direction: row-reverse;
+  display: flex;
+  flex-direction: row;
+}
+
+#clk-digital #date-container div {
+  text-align: right;
+  margin: 5px 10px;
 }
 
 @media only screen and (max-width: 768px) {
-  #clk-digital #digital-clock {
+  #clk-digital #digital-clock,
+  #clk-digital #date-container {
     flex-direction: column;
   }
 
-  #clk-digital #digital-clock .separator {
+  #clk-digital #digital-clock .separator,
+  #clk-digital #date-container #timezone {
     display: none;
   }
 }
 
 @media only screen and (max-width: 768px) {
   :root {
-    --date-size: 1.1rem;
+    --clock-size: 8rem;
+    --date-size: 1rem;
   }
 }

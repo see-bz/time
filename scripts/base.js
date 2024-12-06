@@ -1,10 +1,16 @@
 function getTime(date = new Date()) {
   // Update clock
-  const hours = date.getHours().toString().padStart(2, "0");
+  const hours24Val = date.getHours();
+  const hours24 = hours24Val.toString().padStart(2, "0");
+  const hours12Val = hours24 % 12 || 12;
+  const hours12 = hours12Val.toString().padStart(2, "0");
+
+  const period = hours24 < 12 ? "AM" : "PM";
+
   const minutes = date.getMinutes().toString().padStart(2, "0");
   const seconds = date.getSeconds().toString().padStart(2, "0");
 
-  return { hours, minutes, seconds };
+  return { hours24, hours12, period, minutes, seconds };
 }
 
 function getWeekNumber(date = new Date()) {
@@ -16,7 +22,7 @@ function getWeekNumber(date = new Date()) {
   return weekNumber;
 }
 
-function updateDate(date = new Date()) {
+function getDate(date = new Date()) {
   const weekNumber = getWeekNumber(date);
 
   // Format the date
@@ -33,18 +39,17 @@ function updateDate(date = new Date()) {
     .split(" ")
     .pop();
 
-  const dateString = `${formattedDate}, Week ${weekNumber} [${timeZone}]`;
-  $dom.date.innerHTML = dateString;
-}
-
-function updateTitle(hours, minutes) {
-  document.title = `${$constants.title.prefix}${hours}:${minutes}${$constants.title.suffix}`;
+  return {
+    date: formattedDate,
+    week: weekNumber,
+    timeZone,
+  };
 }
 
 function setGradientBasedOnTime(hour) {
   hour = hour ?? new Date().getHours();
 
-  const body = $dom.body;
+  const body = document.body;
 
   if (hour >= 5 && hour < 12) {
     body.className = "morning";
