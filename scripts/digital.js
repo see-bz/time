@@ -35,7 +35,7 @@ function registerEvents() {
     const elem = $dom.body;
     toggleFullScreen(elem);
   });
-  $dom.body.addEventListener("click", (e) => {
+  $dom.clockContainer.addEventListener("click", (e) => {
     e.preventDefault();
     is12hTimeFormat = !is12hTimeFormat;
   });
@@ -71,9 +71,13 @@ function render() {
   $dom.cMinutes.textContent = minutes;
   $dom.cSeconds.textContent = seconds;
 
+  if (isInitial) {
+    loadTheme();
+  }
+
   // Every minute or initial
-  if (isInitial || Number(seconds) % 10 == 0) {
-    console.log("[X1] Every 10 Minute Updating");
+  if (isInitial || Number(seconds) % 5 == 0) {
+    console.log("[X1] Every 5 seconds Updating");
 
     updateDate(now);
     updatePageTitle(hours, minutes);
@@ -95,6 +99,10 @@ function render() {
     // Initialised
     isInitial = false;
   }
+}
+
+function loadTheme() {
+  loadComponent("header-nav", "header");
 }
 
 render();

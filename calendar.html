@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/animations.css" />
+
+    <style>
+      .calendar {
+        margin-top: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        overflow: hidden;
+        width: min-content;
+      }
+      .calendar-header {
+        background-color: #f4f4f4;
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+      }
+      .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 1px;
+        background-color: #ccc;
+      }
+      .calendar-grid div {
+        background-color: #fff;
+        padding: 10px;
+        text-align: center;
+      }
+      .calendar-grid .day-name {
+        background-color: #f4f4f4;
+        font-weight: bold;
+      }
+      .calendar-grid .empty {
+        background-color: transparent;
+      }
+    </style>
+  </head>
+  <body class="page-calendar" data-theme="default">
+    <header class="fs-hidden fade-in"></header>
+
+    <form id="calendar-options">
+      <h1>Calendar</h1>
+      <label for="month">Month:</label>
+      <input type="number" id="month" />
+      <label for="year">Year:</label>
+      <input type="number" id="year" />
+      <label for="start-day">Start Day of Week:</label>
+      <select id="start-day">
+        <option value="0">Sunday</option>
+        <option value="1" selected>Monday</option>
+        <option value="6">Saturday</option>
+      </select>
+      <button id="generate">Generate Calendar</button>
+    </form>
+
+    <div id="calendar" class="calendar">
+      <div class="calendar-header" id="calendar-header">December 2024</div>
+      <div class="calendar-grid" id="calendar-grid"></div>
+    </div>
+
+    <script src="./scripts/base.js"></script>
+    <script src="./scripts/calendar.js"></script>
+  </body>
+</html>

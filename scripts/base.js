@@ -52,13 +52,13 @@ function setGradientBasedOnTime(hour) {
   const body = document.body;
 
   if (hour >= 5 && hour < 12) {
-    body.className = "morning";
+    body.dataset.theme = "morning";
   } else if (hour >= 12 && hour < 17) {
-    body.className = "afternoon";
+    body.dataset.theme = "afternoon";
   } else if (hour >= 17 && hour < 20) {
-    body.className = "evening";
+    body.dataset.theme = "evening";
   } else {
-    body.className = "night";
+    body.dataset.theme = "night";
   }
 }
 
@@ -87,4 +87,36 @@ function toggleFullScreen(elem) {
     }
   }
   isFullScreen = !isFullScreen;
+}
+
+async function fetchComponent(name) {
+  return new Promise((resolve, reject) => {
+    return fetch(`/components/${name}.html`)
+      .then((response) => {
+        if (!response.ok) throw new Error("Something went wrong");
+
+        return response.text();
+      })
+      .then(resolve)
+      .catch((error) => {
+        console.error("Failed to fetch component: ", error);
+        return reject(error);
+      });
+  });
+}
+
+async function loadComponent(name, selector) {
+  const parent = document.querySelector(selector);
+
+  if (!parent) {
+    console.log("Selector provided is invalid");
+    return;
+  }
+
+  try {
+    const html = await fetchComponent(name);
+    parent.innerHTML = html;
+  } catch (error) {
+    console.log(error);
+  }
 }

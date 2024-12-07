@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope&display=swap");
+
 :root {
   --theme-morning-start: #86eaf9;
   --theme-morning-end: #effda4;
@@ -11,7 +13,7 @@
   --theme-default-end: #a1a1a1;
 
   --theme-body-color: #333;
-  --theme-body-font: "Martian Mono", sans-serif;
+  --theme-body-font: "Manrope", sans-serif;
   --theme-fs-bg: #000;
   --theme-fs-color: #ccc;
 
@@ -19,7 +21,7 @@
   --theme-sl-color: #ddd;
 
   --clock-size: 9.5rem;
-  --clock-period-size: 2rem;
+  --clock-period-size: 2.25rem;
   --date-size: 1.25rem;
 }
 
@@ -35,9 +37,19 @@ body {
   color: var(--theme-body-color);
 }
 
+body.analog canvas {
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 50%;
+}
+
 :fullscreen {
   background-color: var(--theme-fs-bg);
   color: var(--theme-fs-color);
+}
+
+:fullscreen .fs-hidden {
+  display: none;
 }
 
 ::selection {
@@ -46,7 +58,7 @@ body {
 }
 
 /* Default Gradient */
-body.default {
+body[data-theme="default"] {
   background: linear-gradient(
     to bottom,
     var(--theme-default-start),
@@ -54,7 +66,7 @@ body.default {
   );
 }
 
-body.morning {
+body[data-theme="morning"] {
   background: linear-gradient(
     to bottom,
     var(--theme-morning-start),
@@ -62,7 +74,7 @@ body.morning {
   );
 }
 
-body.afternoon {
+body[data-theme="afternoon"] {
   background: linear-gradient(
     to bottom,
     var(--theme-afternoon-start),
@@ -70,7 +82,7 @@ body.afternoon {
   );
 }
 
-body.evening {
+body[data-theme="evening"] {
   background: linear-gradient(
     to bottom,
     var(--theme-evening-start),
@@ -78,13 +90,56 @@ body.evening {
   );
 }
 
-body.night {
+body[data-theme="night"] {
   background: linear-gradient(
     to bottom,
     var(--theme-night-start),
     var(--theme-night-end)
   );
-  color: #aaa;
+
+  --theme-body-color: #aaa;
+}
+
+button {
+  border: none;
+  padding: 5px 10px;
+  margin: 0 2px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  margin: 1rem 0 0 0;
+}
+
+header nav {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+header nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+}
+
+header nav ul li {
+  margin: 0 5px;
+}
+
+header nav li a,
+.brand a {
+  color: var(--theme-body-color);
+  text-decoration: none;
+}
+
+header nav li a:hover {
+  color: var(--theme-body-color);
+  border-bottom: 1px solid var(--theme-body-color);
 }
 
 #clk-digital #clock-container {
@@ -103,11 +158,15 @@ body.night {
   flex-direction: row;
 }
 
+#digital-clock span {
+  font-variant-numeric: tabular-nums;
+}
+
 #clk-digital #digital-clock #period {
   font-size: var(--clock-period-size);
   text-align: right;
   margin-top: auto;
-  margin-bottom: 1.25rem;
+  margin-bottom: 2rem;
 }
 
 #clk-digital #date-container {
@@ -119,6 +178,15 @@ body.night {
 #clk-digital #date-container div {
   text-align: right;
   margin: 5px 10px;
+}
+
+#graphics .mountains {
+  background-image: url("/assets/images/mountains.svg");
+  width: 101vw;
+  height: 5.5rem;
+  position: fixed;
+  left: 0;
+  bottom: 0;
 }
 
 @media only screen and (max-width: 768px) {
