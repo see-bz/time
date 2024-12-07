@@ -72,8 +72,8 @@ function render() {
   $dom.cSeconds.textContent = seconds;
 
   // Every minute or initial
-  if (isInitial || Number(seconds) == 0) {
-    console.log("[X1] Every Minute Updating");
+  if (isInitial || Number(seconds) % 10 == 0) {
+    console.log("[X1] Every 10 Minute Updating");
 
     updateDate(now);
     updatePageTitle(hours, minutes);
